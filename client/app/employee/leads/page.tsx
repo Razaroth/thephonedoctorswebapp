@@ -6,7 +6,7 @@ import Logo from "@/components/Logo";
 
 type Quote = {
 	id: string;
-	user?: { name?: string; email?: string };
+	user?: { name?: string; email?: string; phone?: string };
 	device?: string;
 	issue?: string;
 	details?: string;
@@ -133,7 +133,7 @@ export default function EmployeeLeadsPage() {
 										<span className="font-semibold text-primary">{q.user?.name || "-"}</span>
 									</td>
 									<td className="p-3 border align-top">{q.user?.email || "-"}</td>
-									<td className="p-3 border align-top">{q.phone || "-"}</td>
+									<td className="p-3 border align-top">{q.user?.phone || "-"}</td>
 									<td className="p-3 border align-top">{q.device}</td>
 									<td className="p-3 border align-top">{q.issue}</td>
 									<td className="p-3 border align-top">{q.details}</td>
