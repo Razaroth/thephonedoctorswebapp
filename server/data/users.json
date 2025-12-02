@@ -1,0 +1,27 @@
+[
+  {
+    "id": "6968a3a4-4cb7-47ab-8ab8-714e5aa2eb68",
+    "name": "Josh Lester",
+    "email": "jlester319@gmail.com",
+    "password": "$2a$10$Zs0O27IcuTBLKyE.WF5pVOqXlDhQQ0TYXXuRSitoQ1OvtLLFVlKs2",
+    "role": "employee",
+    "status": "active",
+    "verificationToken": "b5aa3034ff438553794bc6b8d93cab2aaa951eb8cfad65daaeac37d8e931ec70"
+  },
+  {
+    "id": "e1a7b7c2-8e2a-4b7a-9c1a-1a2b3c4d5e6f",
+    "name": "Josh Lester",
+    "email": "jlester319@gmail.com",
+    "password": "$2b$10$k2iXnwHsQNpWVj5nSwoqGu9J4oDnP8zCHqyD5zycDeMseCBbgs5/.",
+    "role": "employee",
+    "status": "active"
+  },
+  {
+    "id": "238cadf0-191e-469a-ab64-cdbd47d8799c",
+    "name": "Tony",
+    "email": "tony@thetony.com",
+    "password": "$2a$10$3bUzCulE//f6RW66A3XegOLvEzZfV5.1t3ZvAnuTPiCCsLDyP.rHK",
+    "role": "customer",
+    "status": "active"
+  }
+]
