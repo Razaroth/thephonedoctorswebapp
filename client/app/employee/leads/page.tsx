@@ -132,7 +132,7 @@ export default function EmployeeLeadsPage() {
 									<td className="p-3 border align-top">
 										<span className="font-semibold text-primary">{q.user?.name || "-"}</span>
 									</td>
-									<td className="p-3 border align-top">{q.email || q.user?.email || "-"}</td>
+									<td className="p-3 border align-top">{q.user?.email || "-"}</td>
 									<td className="p-3 border align-top">{q.phone || "-"}</td>
 									<td className="p-3 border align-top">{q.device}</td>
 									<td className="p-3 border align-top">{q.issue}</td>
