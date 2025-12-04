@@ -42,20 +42,21 @@ export default function DashboardPage() {
   if (!user) return null;
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 bg-white p-8 rounded shadow">
-      <h1 className="text-2xl font-bold mb-4">Welcome, {user.role === "employee" ? "Employee" : "Customer"}!</h1>
+    <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 bg-white p-4 sm:p-8 rounded shadow">
+      <h1 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Welcome, {user.role === "employee" ? "Employee" : "Customer"}!</h1>
       {user.role === "customer" ? (
         <div>
           <p className="mb-2">You can request a repair quote or check your repair status here.</p>
-          <div className="flex gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-3 sm:mb-4">
             <a href="/quote" className="text-blue-600 underline">Request a Quote</a>
           </div>
-          <h2 className="text-lg font-semibold mb-2">Recent Requests</h2>
+          <h2 className="text-base sm:text-lg font-semibold mb-2">Recent Requests</h2>
           {error && <div className="text-red-500 mb-2">{error}</div>}
           {quotes.length === 0 ? (
             <p className="text-gray-600">No recent requests.</p>
           ) : (
-            <table className="w-full border mb-2">
+            <div className="overflow-x-auto">
+              <table className="w-full border mb-2 text-xs sm:text-base">
               <thead>
                 <tr className="bg-gray-100">
                   <th className="p-2 border">Device</th>
@@ -67,14 +68,15 @@ export default function DashboardPage() {
               <tbody>
                 {quotes.map(q => (
                   <tr key={q._id}>
-                    <td className="p-2 border">{q.device}</td>
-                    <td className="p-2 border">{q.issue}</td>
-                    <td className="p-2 border">{q.status}</td>
-                    <td className="p-2 border">{new Date(q.createdAt).toLocaleString()}</td>
+                    <td className="p-2 border whitespace-nowrap">{q.device}</td>
+                    <td className="p-2 border whitespace-nowrap">{q.issue}</td>
+                    <td className="p-2 border whitespace-nowrap">{q.status}</td>
+                    <td className="p-2 border whitespace-nowrap">{new Date(q.createdAt).toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </div>
       ) : (

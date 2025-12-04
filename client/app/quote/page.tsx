@@ -43,9 +43,9 @@ export default function QuotePage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-2xl mb-4 font-bold text-center">Request a Quote</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen px-2 sm:px-0">
+      <form onSubmit={handleSubmit} className="bg-white p-4 sm:p-8 rounded shadow-md w-full max-w-xs sm:max-w-md">
+        <h2 className="text-xl sm:text-2xl mb-3 sm:mb-4 font-bold text-center">Request a Quote</h2>
         {error && <div className="text-red-500 mb-2">{error}</div>}
         {success && <div className="text-green-600 mb-2">{success}</div>}
         <input
@@ -53,7 +53,7 @@ export default function QuotePage() {
           placeholder="Your Email"
           value={email}
           onChange={e => setEmail(e.target.value)}
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-2 sm:mb-3 p-2 border rounded"
           required
         />
         <input
@@ -61,13 +61,13 @@ export default function QuotePage() {
           placeholder="Phone Number"
           value={phone}
           onChange={e => setPhone(e.target.value)}
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-2 sm:mb-3 p-2 border rounded"
           required
         />
         <select
           value={device}
           onChange={e => setDevice(e.target.value)}
-          className="w-full mb-3 p-2 border rounded"
+          className="w-full mb-2 sm:mb-3 p-2 border rounded"
           required
         >
           <option value="">Select Device</option>

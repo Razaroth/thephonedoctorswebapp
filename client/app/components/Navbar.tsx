@@ -11,9 +11,9 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   return (
-    <nav className="bg-blue-700 text-white px-4 py-3 flex gap-4 items-center">
-      <span className="font-bold text-lg">Phone Doctors</span>
-      <div className="flex gap-4 ml-6">
+    <nav className="bg-blue-700 text-white px-2 sm:px-4 py-2 sm:py-3 flex flex-col sm:flex-row gap-2 sm:gap-4 items-center">
+      <span className="font-bold text-base sm:text-lg">Phone Doctors</span>
+      <div className="flex gap-2 sm:gap-4 sm:ml-6 w-full sm:w-auto justify-center sm:justify-start">
         {navLinks.map(link => (
           <Link
             key={link.href}
