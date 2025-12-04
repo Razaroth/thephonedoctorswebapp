@@ -46,22 +46,22 @@ export default function EmployeeDashboard() {
   if (!user) return null;
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-      <div className="flex items-center gap-4 mb-2 justify-between">
-        <div className="flex items-center gap-4">
-          <Logo size={120} />
-          <h1 className="text-3xl font-bold text-primary tracking-tight">Employee Dashboard</h1>
+    <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-200">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3 justify-between">
+        <div className="flex items-center gap-3">
+          <Logo size={80} />
+          <h1 className="text-2xl sm:text-3xl font-bold text-primary tracking-tight">Employee Dashboard</h1>
         </div>
         <button
-          className="text-red-600 font-semibold hover:underline px-4 py-2 border border-red-200 rounded transition"
+          className="text-red-600 font-semibold hover:underline px-3 py-2 border border-red-200 rounded transition"
           onClick={() => {
             localStorage.removeItem("token");
             router.push("/auth/login");
           }}
         >Logout</button>
       </div>
-      <div className="mb-6 ml-[132px]">
-        <span className="text-lg font-semibold text-gray-700">
+      <div className="mb-4">
+        <span className="text-base sm:text-lg font-semibold text-gray-700">
           Welcome{profile && profile.name ? ", " : ""}
           <span className="text-primary">{profile && profile.name ? profile.name : "Employee"}</span>
         </span>

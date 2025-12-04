@@ -55,13 +55,13 @@ export default function EmployeeProfile() {
     }
   };
 
-  if (loading) return <div className="p-8">Loading...</div>;
+  if (loading) return <div className="p-4">Loading...</div>;
 
   return (
-    <div className="max-w-xl mx-auto mt-10 bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-      <div className="flex items-center gap-4 mb-6">
-        <Logo size={80} />
-        <h1 className="text-2xl font-bold text-primary tracking-tight">Profile</h1>
+    <div className="max-w-full sm:max-w-xl mx-auto mt-6 sm:mt-10 bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-200">
+      <div className="flex items-center gap-4 mb-4 sm:mb-6">
+        <Logo size={56} />
+        <h1 className="text-xl sm:text-2xl font-bold text-primary tracking-tight">Profile</h1>
       </div>
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div>

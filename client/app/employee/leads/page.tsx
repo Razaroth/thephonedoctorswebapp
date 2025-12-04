@@ -71,14 +71,14 @@ export default function EmployeeLeadsPage() {
 
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen">
-			<Logo size={360} className="mb-6" />
-			<div className="flex flex-wrap gap-2 mb-4 items-center bg-white p-4 rounded shadow border border-gray-200">
+			<Logo size={120} className="mb-4" />
+			<div className="flex flex-col sm:flex-row flex-wrap gap-2 mb-4 items-start sm:items-center bg-white p-3 sm:p-4 rounded shadow border border-gray-200 w-full">
 				<input
 					type="text"
 					placeholder="Search by customer/device/issue"
 					value={search}
 					onChange={e => setSearch(e.target.value)}
-					className="border border-primary p-2 rounded focus:border-primary focus:ring-2 focus:ring-primary/20 w-48"
+					className="border border-primary p-2 rounded focus:border-primary focus:ring-2 focus:ring-primary/20 w-full sm:w-48"
 				/>
 				<select
 					value={statusFilter}
