@@ -24,4 +24,13 @@
     "role": "customer",
     "status": "active"
   }
+  ,
+  {
+    "id": "tucker-gray-2025",
+    "name": "Tucker Gray",
+    "email": "tucker@thephonedoctors.com",
+    "password": "$2b$10$emq5czL96CqA36lcxQAWO.2CFrVeqZlhvH6JmfO6LFzN9RiRRCRbW",
+    "role": "employee",
+    "status": "active"
+  }
 ]
