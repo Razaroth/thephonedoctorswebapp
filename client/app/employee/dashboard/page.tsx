@@ -52,13 +52,6 @@ export default function EmployeeDashboard() {
           <Logo size={80} />
           <h1 className="text-2xl sm:text-3xl font-bold text-primary tracking-tight">Employee Dashboard</h1>
         </div>
-        <button
-          className="text-red-600 font-semibold hover:underline px-3 py-2 border border-red-200 rounded transition"
-          onClick={() => {
-            localStorage.removeItem("token");
-            router.push("/auth/login");
-          }}
-        >Logout</button>
       </div>
       <div className="mb-4">
         <span className="text-base sm:text-lg font-semibold text-gray-700">
@@ -102,6 +95,15 @@ export default function EmployeeDashboard() {
       ) : (
         <div className="text-gray-500">No stats available.</div>
       )}
+      <div className="mt-8 flex justify-center">
+        <button
+          className="w-full sm:w-auto text-red-600 font-semibold hover:underline px-3 py-2 border border-red-200 rounded transition"
+          onClick={() => {
+            localStorage.removeItem("token");
+            router.push("/auth/login");
+          }}
+        >Logout</button>
+      </div>
     </div>
   );
 }
