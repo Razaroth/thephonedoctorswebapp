@@ -94,7 +94,7 @@ export default function EmployeeDashboard() {
             <div className="text-4xl font-bold">{stats.completed}</div>
             <div className="mt-2 text-lg">Completed</div>
           </div>
-          <div className="bg-black rounded-lg p-6 text-center shadow text-white">
+          <div className="bg-white rounded-lg p-6 text-center shadow text-black">
             <div className="text-4xl font-bold">{stats.assigned}</div>
             <div className="mt-2 text-lg">Assigned to You</div>
           </div>

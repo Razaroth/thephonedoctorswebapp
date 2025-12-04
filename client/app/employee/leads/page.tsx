@@ -115,15 +115,15 @@ export default function EmployeeLeadsPage() {
 					<table className="w-full border shadow-lg rounded-lg overflow-hidden">
 						<thead>
 							<tr>
-								<th className="p-3 border bg-black text-white">Customer</th>
-								<th className="p-3 border bg-black text-white">Email</th>
-								<th className="p-3 border bg-black text-white">Phone</th>
-								<th className="p-3 border bg-black text-white">Device</th>
-								<th className="p-3 border bg-black text-white">Issue</th>
-								<th className="p-3 border bg-black text-white">Details</th>
-								<th className="p-3 border bg-black text-white">Status</th>
-								<th className="p-3 border bg-black text-white">Date</th>
-								<th className="p-3 border bg-black text-white">Action</th>
+								<th className="p-3 border bg-white text-black">Customer</th>
+								<th className="p-3 border bg-white text-black">Email</th>
+								<th className="p-3 border bg-white text-black">Phone</th>
+								<th className="p-3 border bg-white text-black">Device</th>
+								<th className="p-3 border bg-white text-black">Issue</th>
+								<th className="p-3 border bg-white text-black">Details</th>
+								<th className="p-3 border bg-white text-black">Status</th>
+								<th className="p-3 border bg-white text-black">Date</th>
+								<th className="p-3 border bg-white text-black">Action</th>
 							</tr>
 						</thead>
 						<tbody>
