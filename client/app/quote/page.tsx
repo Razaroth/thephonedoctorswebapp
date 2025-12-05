@@ -31,7 +31,7 @@ export default function QuotePage() {
         },
         body: JSON.stringify({ device, issue, details, phone, email, location }),
       });
-      let data = {};
+      let data: any = {};
       try {
         data = await res.json();
       } catch (jsonErr) {
@@ -47,7 +47,7 @@ export default function QuotePage() {
         setEmail("");
         setLocation("");
       } else {
-        setError(data.error || `Failed to submit quote request (status ${res.status})`);
+        setError(data?.error || `Failed to submit quote request (status ${res.status})`);
       }
     } catch (err) {
       setError("Network error: Could not reach the server.");
