@@ -1,5 +1,11 @@
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+});
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withPWA({
   images: {
     remotePatterns: [
       {
@@ -14,6 +20,7 @@ const nextConfig = {
       },
     ],
   },
-};
+  turbopack: {},
+});
 
 module.exports = nextConfig;
