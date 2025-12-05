@@ -8,6 +8,7 @@ export default function QuotePage() {
   const [details, setDetails] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [location, setLocation] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function QuotePage() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ device, issue, details, phone, email }),
+      body: JSON.stringify({ device, issue, details, phone, email, location }),
     });
     const data = await res.json();
     if (res.ok) {
@@ -37,6 +38,7 @@ export default function QuotePage() {
       setDetails("");
       setPhone("");
       setEmail("");
+      setLocation("");
     } else {
       setError(data.error || "Failed to submit quote request");
     }
@@ -56,6 +58,19 @@ export default function QuotePage() {
           className="w-full mb-2 sm:mb-3 p-2 border rounded"
           required
         />
+        <select
+          value={location}
+          onChange={e => setLocation(e.target.value)}
+          className="w-full mb-2 sm:mb-3 p-2 border rounded"
+          required
+        >
+          <option value="">Which Phone Doctors location would you like to go to?</option>
+          <option value="Downtown">Downtown</option>
+          <option value="Eastside">Eastside</option>
+          <option value="Westside">Westside</option>
+          <option value="Northside">Northside</option>
+          <option value="Southside">Southside</option>
+        </select>
         <input
           type="tel"
           placeholder="Phone Number"
@@ -74,6 +89,7 @@ export default function QuotePage() {
           <option value="phone">Phone</option>
           <option value="computer">Computer</option>
           <option value="tablet">Tablet</option>
+          <option value="game console">Game Console</option>
         </select>
         <input
           type="text"
