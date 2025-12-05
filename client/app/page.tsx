@@ -21,7 +21,7 @@ export default function Home() {
             <p className="text-zinc-600 text-sm text-center">Hardware upgrades, virus removal, data recovery, and more.</p>
           </div>
           <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center border border-zinc-200">
-            <Image src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" width={320} height={180} alt="Technician repairing smartphone" className="rounded-lg mb-3 shadow-lg" />
+            <Image src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" width={320} height={180} alt="Human technician working on phone" className="rounded-lg mb-3 shadow-lg" />
             <span className="text-black text-xl font-bold mb-1">Quick Diagnostics</span>
             <p className="text-zinc-600 text-sm text-center">We provide fast diagnostics, get a quote before any work begins</p>
           </div>
