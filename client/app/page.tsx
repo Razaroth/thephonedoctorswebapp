@@ -1,65 +1,51 @@
-import Image from "next/image";
-
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white font-sans">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-10 px-4 bg-white sm:py-20 sm:px-8 md:px-16 md:py-32 sm:items-start">
-        <Image
-          className="mb-6 w-24 h-auto sm:w-28"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-4 text-center w-full sm:items-start sm:text-left sm:gap-6">
-          <h1 className="w-full max-w-xs text-2xl sm:text-3xl font-semibold leading-8 sm:leading-10 tracking-tight text-black">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="w-full max-w-md text-base sm:text-lg leading-7 sm:leading-8 text-zinc-600">
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 underline"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 underline"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center font-sans">
+      <main className="w-full max-w-2xl mx-auto flex flex-col items-center px-4 py-8 sm:py-16">
+        <div className="mb-6 flex flex-col items-center">
+          <span className="text-4xl sm:text-5xl font-extrabold text-primary tracking-tight mb-2">Phone Doctors</span>
+          <span className="text-lg sm:text-xl text-zinc-700 font-medium">Your trusted device repair experts</span>
         </div>
-        <div className="flex flex-col gap-3 w-full text-base font-medium sm:flex-row sm:gap-4">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-4 sm:px-5 text-background transition-colors hover:bg-[#383838] sm:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className=""
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-4 sm:px-5 transition-colors hover:border-transparent hover:bg-gray-100 sm:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <section className="w-full bg-white rounded-xl shadow p-4 sm:p-8 mb-8">
+          <h2 className="text-2xl font-bold text-primary mb-4 text-center">Our Services</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <li className="bg-red-50 border-l-4 border-primary p-4 rounded">
+              <span className="font-semibold text-black">Phone & Tablet Repair</span>
+              <p className="text-zinc-600 text-sm mt-2">Screen, battery, charging port, water damage, and more.</p>
+            </li>
+            <li className="bg-red-50 border-l-4 border-primary p-4 rounded">
+              <span className="font-semibold text-black">Computer & Laptop Repair</span>
+              <p className="text-zinc-600 text-sm mt-2">Hardware upgrades, virus removal, data recovery, and more.</p>
+            </li>
+            <li className="bg-red-50 border-l-4 border-primary p-4 rounded">
+              <span className="font-semibold text-black">Free Diagnostics</span>
+              <p className="text-zinc-600 text-sm mt-2">No fix, no fee. Get a quote before any work begins.</p>
+            </li>
+            <li className="bg-red-50 border-l-4 border-primary p-4 rounded">
+              <span className="font-semibold text-black">Fast Turnaround</span>
+              <p className="text-zinc-600 text-sm mt-2">Most repairs completed same day or next day.</p>
+            </li>
+          </ul>
+        </section>
+        <section className="w-full bg-white rounded-xl shadow p-4 sm:p-8 mb-8">
+          <h2 className="text-xl font-bold text-primary mb-2 text-center">Why Choose Us?</h2>
+          <ul className="list-disc pl-5 text-zinc-700 text-base">
+            <li>Experienced, certified technicians</li>
+            <li>Transparent pricing and honest advice</li>
+            <li>Warranty on all repairs</li>
+            <li>Multiple convenient locations</li>
+          </ul>
+        </section>
+        <section className="w-full bg-white rounded-xl shadow p-4 sm:p-8 mb-8">
+          <h2 className="text-xl font-bold text-primary mb-2 text-center">Contact & Locations</h2>
+          <div className="text-zinc-700 text-base text-center">
+            <p>Email: <a href="mailto:info@thephonedoctors.com" className="text-primary font-semibold">info@thephonedoctors.com</a></p>
+            <p>Phone: <a href="tel:555-123-4567" className="text-primary font-semibold">555-123-4567</a></p>
+            <p className="mt-2">Visit us at Downtown, Eastside, Westside, Northside, or Southside locations!</p>
+          </div>
+        </section>
+        <a href="/quote" className="w-full sm:w-auto mt-4 px-6 py-3 rounded-full bg-primary text-white font-bold text-lg text-center shadow hover:bg-red-700 transition">Request a Quote</a>
       </main>
     </div>
   );
