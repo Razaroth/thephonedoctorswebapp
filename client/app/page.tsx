@@ -45,7 +45,7 @@ export default function Home() {
           <div className="text-zinc-700 text-base text-center">
             <p>Email: <a href="mailto:okc@thephonedoctors.com" className="text-primary font-semibold">okc@thephonedoctors.com</a></p>
             <p>Phone: <a href="tel:405-849-9204" className="text-primary font-semibold">405-849-9204</a></p>
-            <p className="mt-2">Visit us at Downtown, Eastside, Westside, Northside, or Southside locations!</p>
+            <p className="mt-2">Visit us in OKC, Edmond, Tulsa and Arkansas!</p>
           </div>
         </section>
         <a href="/quote" className="w-full sm:w-auto mt-4 px-6 py-3 rounded-full bg-primary text-white font-bold text-lg text-center shadow-lg hover:bg-red-700 transition">Request a Quote</a>
