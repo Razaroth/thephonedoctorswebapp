@@ -1,11 +1,13 @@
 
 import Image from "next/image";
+import Logo from "@/components/Logo";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#1a1a1a] to-primary flex flex-col items-center justify-center font-sans">
       <main className="w-full max-w-3xl mx-auto flex flex-col items-center px-4 py-8 sm:py-16">
         <div className="mb-8 flex flex-col items-center">
+          <Logo size={240} className="mb-4 sm:mb-6" />
           <span className="text-5xl sm:text-6xl font-extrabold text-white drop-shadow-glow mb-2 tracking-tight">Phone Doctors</span>
           <span className="text-lg sm:text-2xl text-primary font-semibold uppercase tracking-widest">Futuristic Tech Repair</span>
         </div>
