@@ -43,8 +43,8 @@ export default function Home() {
         <section className="w-full bg-white rounded-xl shadow-xl p-6 mb-8 border border-zinc-200">
           <h2 className="text-xl font-bold text-primary mb-2 text-center">Contact & Locations</h2>
           <div className="text-zinc-700 text-base text-center">
-            <p>Email: <a href="mailto:info@thephonedoctors.com" className="text-primary font-semibold">info@thephonedoctors.com</a></p>
-            <p>Phone: <a href="tel:555-123-4567" className="text-primary font-semibold">555-123-4567</a></p>
+            <p>Email: <a href="mailto:okc@thephonedoctors.com" className="text-primary font-semibold">okc@thephonedoctors.com</a></p>
+            <p>Phone: <a href="tel:405-849-9204" className="text-primary font-semibold">405-849-9204</a></p>
             <p className="mt-2">Visit us at Downtown, Eastside, Westside, Northside, or Southside locations!</p>
           </div>
         </section>
