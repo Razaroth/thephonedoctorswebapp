@@ -22,25 +22,35 @@ export default function QuotePage() {
       router.push("/auth/login");
       return;
     }
-    const res = await fetch("http://localhost:5000/api/quote", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ device, issue, details, phone, email, location }),
-    });
-    const data = await res.json();
-    if (res.ok) {
-      setSuccess("Quote request submitted! We will contact you soon.");
-      setDevice("");
-      setIssue("");
-      setDetails("");
-      setPhone("");
-      setEmail("");
-      setLocation("");
-    } else {
-      setError(data.error || "Failed to submit quote request");
+    try {
+      const res = await fetch("http://localhost:5000/api/quote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ device, issue, details, phone, email, location }),
+      });
+      let data = {};
+      try {
+        data = await res.json();
+      } catch (jsonErr) {
+        setError("Server error: Could not parse response.");
+        return;
+      }
+      if (res.ok) {
+        setSuccess("Quote request submitted! We will contact you soon.");
+        setDevice("");
+        setIssue("");
+        setDetails("");
+        setPhone("");
+        setEmail("");
+        setLocation("");
+      } else {
+        setError(data.error || `Failed to submit quote request (status ${res.status})`);
+      }
+    } catch (err) {
+      setError("Network error: Could not reach the server.");
     }
   };
 
