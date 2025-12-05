@@ -64,12 +64,17 @@ export default function QuotePage() {
           className="w-full mb-2 sm:mb-3 p-2 border rounded"
           required
         >
-          <option value="">Which Phone Doctors location would you like to go to?</option>
-          <option value="Downtown">Downtown</option>
-          <option value="Eastside">Eastside</option>
-          <option value="Westside">Westside</option>
-          <option value="Northside">Northside</option>
-          <option value="Southside">Southside</option>
+          <option value="">Pick a location</option>
+          <option value="Oklahoma City">Oklahoma City</option>
+          <option value="Edmond">Edmond</option>
+          <option value="71st and Memorial (Tulsa)">71st and Memorial (Tulsa)</option>
+          <option value="E. 41st St. (Tulsa)">E. 41st St. (Tulsa)</option>
+          <option value="Broken Arrow">Broken Arrow</option>
+          <option value="Owasso">Owasso</option>
+          <option value="Jenks">Jenks</option>
+          <option value="Bixby">Bixby</option>
+          <option value="Fayetteville (AR)">Fayetteville (AR)</option>
+          <option value="Fort Smith (AR)">Fort Smith (AR)</option>
         </select>
         <input
           type="tel"
