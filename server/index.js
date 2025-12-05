@@ -151,7 +151,7 @@ app.post('/api/login', async (req, res) => {
 
 // Quote request endpoint
 app.post('/api/quote', auth, async (req, res) => {
-  const { device, issue, details } = req.body;
+  const { device, issue, details, phone, email, location } = req.body;
   try {
     const quote = {
       id: uuidv4(),
@@ -159,6 +159,9 @@ app.post('/api/quote', auth, async (req, res) => {
       device,
       issue,
       details,
+      phone,
+      email,
+      location,
       status: 'pending',
       assignedTo: null,
       comments: [],
