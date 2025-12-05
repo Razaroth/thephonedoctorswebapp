@@ -304,7 +304,7 @@ app.get('/api/quotes', auth, async (req, res) => {
       const user = users.find(u => u.id === q.user);
       return {
         ...q,
-        user: user ? { name: user.name, email: user.email } : { name: '-', email: '-' }
+        user: user ? { name: user.name, email: user.email, phone: user.phone || '-' } : { name: '-', email: '-', phone: '-' }
       };
     });
     res.json(quotesWithUser);
