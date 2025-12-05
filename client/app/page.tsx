@@ -11,7 +11,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 w-full">
           <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center border border-zinc-200">
-            <Image src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" width={320} height={180} alt="Phone Repair" className="rounded-lg mb-3 shadow-lg" />
+            <Image src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80" width={320} height={180} alt="Smartphone" className="rounded-lg mb-3 shadow-lg" />
             <span className="text-black text-xl font-bold mb-1">Phone & Tablet Repair</span>
             <p className="text-zinc-600 text-sm text-center">Screens, batteries, charging ports, water damage, and more.</p>
           </div>
@@ -21,9 +21,9 @@ export default function Home() {
             <p className="text-zinc-600 text-sm text-center">Hardware upgrades, virus removal, data recovery, and more.</p>
           </div>
           <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center border border-zinc-200">
-            <Image src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" width={320} height={180} alt="Diagnostics" className="rounded-lg mb-3 shadow-lg" />
-            <span className="text-black text-xl font-bold mb-1">Free Diagnostics</span>
-            <p className="text-zinc-600 text-sm text-center">No fix, no fee. Get a quote before any work begins.</p>
+            <Image src="https://images.unsplash.com/photo-1515548212235-bf2b6fd3b8a2?auto=format&fit=crop&w=400&q=80" width={320} height={180} alt="Technician working on phone" className="rounded-lg mb-3 shadow-lg" />
+            <span className="text-black text-xl font-bold mb-1">Quick Diagnostics</span>
+            <p className="text-zinc-600 text-sm text-center">We provide fast diagnostics, get a quote before any work begins</p>
           </div>
           <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col items-center border border-zinc-200">
             <Image src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=400&q=80" width={320} height={180} alt="Fast Turnaround" className="rounded-lg mb-3 shadow-lg" />
