@@ -21,7 +21,7 @@ export default function DashboardPage() {
       const payload = JSON.parse(atob(token.split(".")[1]));
       setUser(payload);
       if (payload.role === "customer") {
-        fetch("http://localhost:5000/api/my-quotes", {
+        fetch("https://thephonedoctorswebapp-server.onrender.com/api/my-quotes", {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then(res => res.json())

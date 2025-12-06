@@ -22,7 +22,7 @@ export default function MyQuotesPage() {
         return;
       }
       setUser(payload);
-      fetch("http://localhost:5000/api/my-quotes", {
+      fetch("https://thephonedoctorswebapp-server.onrender.com/api/my-quotes", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(res => res.json())
