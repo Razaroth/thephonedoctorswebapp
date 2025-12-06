@@ -35,13 +35,13 @@ export default function EmployeeLeadsPage() {
 		const token = localStorage.getItem("token");
 		if (!token) return;
 		// Fetch all quotes
-		fetch("http://localhost:5000/api/quotes", {
+		fetch("https://thephonedoctorswebapp-server.onrender.com/api/quotes", {
 			headers: { Authorization: `Bearer ${token}` }
 		})
 			.then(res => res.json())
 			.then(data => setQuotes(Array.isArray(data) ? data : []));
 		// Fetch all employees
-		fetch("http://localhost:5000/api/employees", {
+		fetch("https://thephonedoctorswebapp-server.onrender.com/api/employees", {
 			headers: { Authorization: `Bearer ${token}` }
 		})
 			.then(res => res.json())
