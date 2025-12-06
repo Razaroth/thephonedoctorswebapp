@@ -111,19 +111,19 @@ export default function EmployeeLeadsPage() {
 			{filteredQuotes.length === 0 ? (
 				<p className="text-center text-gray-500 mt-8">No quote requests found.</p>
 			) : (
-				<div className="overflow-x-auto mt-4">
-					<table className="w-full border shadow-lg rounded-lg overflow-hidden">
+				<div className="overflow-x-auto mt-4 w-full">
+					<table className="min-w-[700px] sm:w-full border shadow-lg rounded-lg overflow-hidden text-xs sm:text-sm">
 						<thead>
 							<tr>
-								<th className="p-3 border bg-white text-black">Customer</th>
-								<th className="p-3 border bg-white text-black">Email</th>
-								<th className="p-3 border bg-white text-black">Phone</th>
-								<th className="p-3 border bg-white text-black">Device</th>
-								<th className="p-3 border bg-white text-black">Issue</th>
-								<th className="p-3 border bg-white text-black">Details</th>
-								<th className="p-3 border bg-white text-black">Status</th>
-								<th className="p-3 border bg-white text-black">Date</th>
-								<th className="p-3 border bg-white text-black">Action</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Customer</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Email</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Phone</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Device</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Issue</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Details</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Status</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Date</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Action</th>
 							</tr>
 						</thead>
 						<tbody>
