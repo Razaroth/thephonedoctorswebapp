@@ -118,79 +118,74 @@ app.put('/api/employee/profile', auth, async (req, res) => {
   console.log('Profile update request:', { id: req.user.id, name, email, password, homeStore });
   const update = {};
   if (name) update.name = name;
-  if (email) update.email = email;
-  if (typeof homeStore === "string") update.homeStore = homeStore;
-  if (password) update.password = await bcrypt.hash(password, 10);
-  try {
-    const user = await fileStore.updateUser(req.user.id, update);
-    if (!user) {
-      console.error('User not found for id:', req.user.id);
-      return res.status(404).json({ error: 'User not found' });
-    }
-    res.json({ id: user.id, name: user.name, email: user.email, homeStore: user.homeStore || "" });
-  } catch (err) {
-    console.error('Profile update error:', err);
-    res.status(500).json({ error: err.message });
-  }
-});
+  // ...existing code...
 
-// ...existing code...
+  require('dotenv').config();
+  const express = require('express');
+  const cors = require('cors');
+  const jwt = require('jsonwebtoken');
+  const bcrypt = require('bcryptjs');
+  const fileStore = require('./fileStore');
+  const { v4: uuidv4 } = require('uuid');
 
-// Auth middleware
-function auth(req, res, next) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'No token provided' });
-  }
-  const token = authHeader.split(' ')[1];
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch {
-    return res.status(401).json({ error: 'Invalid token' });
-  }
-}
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
 
-// Email verification for employee registration
-const crypto = require('crypto');
-const transporter = require('./mailer');
+  // Auth middleware
+  function auth(req, res, next) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      // ...existing code...
 
+      // Get customer profile
+      app.get('/api/customer/profile', auth, async (req, res) => {
+        if (req.user.role !== 'customer') {
+          return res.status(403).json({ error: 'Access denied' });
+        }
+        try {
+          const user = await fileStore.getUserById(req.user.id);
+          if (!user) return res.status(404).json({ error: 'User not found' });
+          res.json({
+            id: user.id,
+            name: user.name || "",
+            email: user.email || "",
+            city: user.city || "",
+            state: user.state || "",
+            phone: user.phone || ""
+          });
+        } catch (err) {
+          res.status(500).json({ error: err.message });
+        }
+      });
 
-app.post('/api/register', async (req, res) => {
-  const { name, email, password } = req.body;
-  try {
-    // Check for duplicate email, but allow if status is 'deleted'
-    const existing = await fileStore.getUserByEmail(email);
-    if (existing && existing.status !== 'deleted') {
-      return res.status(400).json({ error: 'Email already registered' });
-    }
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    let userData = {
-      id: uuidv4(),
-      name,
-      email,
-      password: hashedPassword,
-      role: 'customer',
-      status: 'active',
-    };
-    await fileStore.addUser(userData);
-
-    res.status(201).json({ message: 'User registered' });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
-
-
-app.post('/api/login', async (req, res) => {
-  const { email, password } = req.body;
-  const start = Date.now();
-  try {
-    const user = await fileStore.getUserByEmail(email);
-    const lookupTime = Date.now();
-    if (!user) {
+      // Update customer profile
+      app.put('/api/customer/profile', auth, async (req, res) => {
+        if (req.user.role !== 'customer') {
+          return res.status(403).json({ error: 'Access denied' });
+        }
+        const { name, email, city, state, phone } = req.body;
+        const update = {};
+        if (typeof name === "string") update.name = name;
+        if (typeof email === "string") update.email = email;
+        if (typeof city === "string") update.city = city;
+        if (typeof state === "string") update.state = state;
+        if (typeof phone === "string") update.phone = phone;
+        try {
+          const user = await fileStore.updateUser(req.user.id, update);
+          if (!user) return res.status(404).json({ error: 'User not found' });
+          res.json({
+            id: user.id,
+            name: user.name || "",
+            email: user.email || "",
+            city: user.city || "",
+            state: user.state || "",
+            phone: user.phone || ""
+          });
+        } catch (err) {
+          res.status(500).json({ error: err.message });
+        }
+      });
       console.log(`[LOGIN] User lookup failed in ${lookupTime - start}ms`);
       return res.status(400).json({ error: 'Invalid credentials' });
     }
