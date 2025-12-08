@@ -24,13 +24,13 @@ export default function EmployeeDashboard() {
       }
       setUser(payload);
       // Fetch employee profile for name
-      fetch("http://localhost:5000/api/employee/profile", {
+      fetch("https://thephonedoctorswebapp-server.onrender.com/api/employee/profile", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(res => res.json())
         .then(data => setProfile(data))
         .catch(() => setProfile(null));
-      fetch("http://localhost:5000/api/employee/stats", {
+      fetch("https://thephonedoctorswebapp-server.onrender.com/api/employee/stats", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(res => res.json())
@@ -50,7 +50,9 @@ export default function EmployeeDashboard() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3 justify-between">
         <div className="flex items-center gap-3">
           <Logo size={80} />
-          <h1 className="text-2xl sm:text-3xl font-bold text-primary tracking-tight">Employee Dashboard</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-primary tracking-tight">
+            {profile && profile.name ? `${profile.name}'s Dashboard` : "Employee Dashboard"}
+          </h1>
         </div>
       </div>
       <div className="mb-4">
