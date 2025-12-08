@@ -1,5 +1,9 @@
 // ...existing code...
 // Place this after app initialization and middleware
+// ...existing code...
+
+// After app initialization and middleware
+// --- LOGIN ROUTE ---
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
   const start = Date.now();
