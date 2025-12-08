@@ -33,6 +33,14 @@ app.post('/api/login', async (req, res) => {
     const user = await fileStore.getUserByEmail(email);
     const lookupTime = Date.now();
     if (!user) {
+// Login endpoint (duplicate, ensure async)
+app.post('/api/login', async (req, res) => {
+  const { email, password } = req.body;
+  const start = Date.now();
+  try {
+    const user = await fileStore.getUserByEmail(email);
+    const lookupTime = Date.now();
+    if (!user) {
       console.log(`[LOGIN] User lookup failed in ${lookupTime - start}ms`);
       return res.status(400).json({ error: 'Invalid credentials' });
     }
