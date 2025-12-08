@@ -2,6 +2,9 @@
 // --- All routes below ---
 // Place customer profile routes AFTER app initialization
 // Get customer profile
+// ...existing code...
+// --- All routes below ---
+// Get customer profile
 app.get('/api/customer/profile', auth, async (req, res) => {
   if (req.user.role !== 'customer') {
     return res.status(403).json({ error: 'Access denied' });
