@@ -38,6 +38,12 @@ export default function CustomerLeadsPage() {
       <div className="flex flex-col items-center w-full mb-6">
         <Logo size={120} className="mb-4 mx-auto block" />
         <h1 className="text-2xl font-bold text-center mb-4 text-primary tracking-tight">My Repair Leads</h1>
+        <a
+          href="/customer/dashboard"
+          className="mt-2 text-primary underline text-base font-semibold hover:text-red-600 transition"
+        >
+          View Loyalty Points
+        </a>
       </div>
       {loading ? (
         <div className="text-center text-gray-500">Loading...</div>
