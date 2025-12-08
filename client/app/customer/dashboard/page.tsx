@@ -72,11 +72,7 @@ export default function CustomerDashboard() {
         {/* You can add more cards here for other customer stats/features */}
       </div>
       {error && <div className="text-red-500 mt-2">{error}</div>}
-      {debug && (
-        <pre className="bg-gray-100 text-xs p-2 mt-4 rounded border overflow-x-auto max-w-full">
-          {JSON.stringify(debug, null, 2)}
-        </pre>
-      )}
+      {/* Debug output removed for clean UI */}
       <div className="mt-8 flex justify-center">
         <button
           className="w-full sm:w-auto text-red-600 font-semibold hover:underline px-3 py-2 border border-red-200 rounded transition"
