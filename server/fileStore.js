@@ -39,33 +39,41 @@ async function writeJson(file, data) {
 }
 
 // USERS
+let usersCache = null;
+async function loadUsersCache() {
+  if (!usersCache) {
+    usersCache = await readJson(usersFile);
+  }
+}
+
 async function getAllUsers() {
-  return readJson(usersFile);
+  await loadUsersCache();
+  return usersCache;
 }
 
 async function getUserById(id) {
-  const users = await getAllUsers();
-  return users.find(u => u.id === id);
+  await loadUsersCache();
+  return usersCache.find(u => u.id === id);
 }
 
 async function getUserByEmail(email) {
-  const users = await getAllUsers();
-  return users.find(u => u.email === email);
+  await loadUsersCache();
+  return usersCache.find(u => u.email === email);
 }
 
 async function addUser(user) {
-  const users = await getAllUsers();
-  users.push(user);
-  await writeJson(usersFile, users);
+  await loadUsersCache();
+  usersCache.push(user);
+  await writeJson(usersFile, usersCache);
 }
 
 async function updateUser(id, update) {
-  const users = await getAllUsers();
-  const idx = users.findIndex(u => u.id === id);
+  await loadUsersCache();
+  const idx = usersCache.findIndex(u => u.id === id);
   if (idx === -1) return null;
-  users[idx] = { ...users[idx], ...update };
-  await writeJson(usersFile, users);
-  return users[idx];
+  usersCache[idx] = { ...usersCache[idx], ...update };
+  await writeJson(usersFile, usersCache);
+  return usersCache[idx];
 }
 
 // QUOTES

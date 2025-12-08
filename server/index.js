@@ -133,17 +133,30 @@ app.post('/api/register', async (req, res) => {
 
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
+  const start = Date.now();
   try {
     const user = await fileStore.getUserByEmail(email);
-    if (!user) return res.status(400).json({ error: 'Invalid credentials' });
+    const lookupTime = Date.now();
+    if (!user) {
+      console.log(`[LOGIN] User lookup failed in ${lookupTime - start}ms`);
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
     if (user.role === 'employee' && user.status !== 'active') {
+      console.log(`[LOGIN] Employee not active, lookup in ${lookupTime - start}ms`);
       return res.status(403).json({ error: 'Your account is pending approval by an administrator.' });
     }
+    const bcryptStart = Date.now();
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
+    const bcryptEnd = Date.now();
+    if (!isMatch) {
+      console.log(`[LOGIN] Bcrypt failed in ${bcryptEnd - bcryptStart}ms`);
+      return res.status(400).json({ error: 'Invalid credentials' });
+    }
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    console.log(`[LOGIN] Success: lookup ${lookupTime - start}ms, bcrypt ${bcryptEnd - bcryptStart}ms, total ${bcryptEnd - start}ms`);
     res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   } catch (err) {
+    console.log(`[LOGIN] Error: ${err.message}`);
     res.status(500).json({ error: err.message });
   }
 });
