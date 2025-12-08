@@ -40,9 +40,11 @@ async function writeJson(file, data) {
 
 // USERS
 let usersCache = null;
+let usersCacheLoaded = false;
 async function loadUsersCache() {
-  if (!usersCache) {
+  if (!usersCacheLoaded) {
     usersCache = await readJson(usersFile);
+    usersCacheLoaded = true;
   }
 }
 
