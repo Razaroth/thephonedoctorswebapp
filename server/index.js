@@ -312,8 +312,13 @@ app.get('/api/quotes', auth, async (req, res) => {
   try {
     const quotes = await fileStore.getAllQuotes();
     const users = await fileStore.getAllUsers();
+    const employee = await fileStore.getUserById(req.user.id);
     // Exclude archived quotes for employees
-    const activeQuotes = quotes.filter(q => q.status !== 'archived');
+    let activeQuotes = quotes.filter(q => q.status !== 'archived');
+    // Filter by homeStore if set
+    if (employee && employee.homeStore) {
+      activeQuotes = activeQuotes.filter(q => q.location === employee.homeStore);
+    }
     const quotesWithUser = activeQuotes.map(q => {
       const user = users.find(u => u.id === q.user);
       return {
