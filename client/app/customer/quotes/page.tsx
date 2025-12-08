@@ -45,7 +45,6 @@ export default function CustomerQuotesPage() {
   return (
     <div className="max-w-2xl mx-auto mt-10 bg-gradient-to-br from-white via-gray-50 to-red-50 p-8 rounded-2xl shadow-2xl border border-gray-100 animate-fade-in">
       <h1 className="text-3xl font-extrabold mb-8 text-center text-primary tracking-tight drop-shadow-lg flex items-center justify-center gap-2">
-        <span className="material-icons text-red-500">description</span>
         My Quote Requests
       </h1>
       {quotes.length === 0 ? (
