@@ -174,7 +174,7 @@ export default function EmployeeLeadsPage() {
 											onClick={async () => {
 												const token = localStorage.getItem("token");
 												if (!token) return;
-												const res = await fetch(`http://localhost:5000/api/quotes/${q.id}`, {
+												const res = await fetch(`https://thephonedoctorswebapp-server.onrender.com/api/quotes/${q.id}`, {
 													method: "PATCH",
 													headers: {
 														"Content-Type": "application/json",
@@ -201,7 +201,7 @@ export default function EmployeeLeadsPage() {
 											onClick={async () => {
 												const token = localStorage.getItem("token");
 												if (!token) return;
-												const res = await fetch(`http://localhost:5000/api/quotes/${q.id}`, {
+												const res = await fetch(`https://thephonedoctorswebapp-server.onrender.com/api/quotes/${q.id}`, {
 													method: "DELETE",
 													headers: {
 														Authorization: `Bearer ${token}`,
