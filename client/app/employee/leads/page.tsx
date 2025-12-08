@@ -70,8 +70,14 @@ export default function EmployeeLeadsPage() {
 	}, [quotes]);
 
 	return (
-		<div className="flex flex-col items-center justify-center min-h-screen">
-			<Logo size={120} className="mb-4" />
+		   <div className="flex flex-col items-center justify-center min-h-screen">
+			   <Logo size={180} className="mb-4" />
+			   <button
+				   className="self-start mb-4 px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold"
+				   onClick={() => window.history.back()}
+			   >
+				   ← Back
+			   </button>
 			<div className="flex flex-col sm:flex-row flex-wrap gap-2 mb-4 items-start sm:items-center bg-white p-3 sm:p-4 rounded shadow border border-gray-200 w-full">
 				<input
 					type="text"

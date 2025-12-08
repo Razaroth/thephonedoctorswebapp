@@ -63,6 +63,12 @@ export default function EmployeeProfile() {
         <Logo size={56} />
         <h1 className="text-xl sm:text-2xl font-bold text-primary tracking-tight">Profile</h1>
       </div>
+      <button
+        className="mb-4 px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold"
+        onClick={() => window.history.back()}
+      >
+        ← Back
+      </button>
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div>
           <label className="block text-gray-700 font-semibold mb-1">Name</label>
