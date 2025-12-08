@@ -74,17 +74,18 @@ export default function EmployeeSettings() {
         <span>&larr;</span>
         <span>Back</span>
       </button>
-      <select
-        value={homeStore}
-        onChange={e => setHomeStore(e.target.value)}
-        className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-        required
-      >
-        <option value="">Select your home store</option>
-        {LOCATIONS.map(loc => (
-          <option key={loc} value={loc}>{loc}</option>
-        ))}
-      </select>
+      <form className="space-y-6" onSubmit={handleSave}>
+        <select
+          value={homeStore}
+          onChange={e => setHomeStore(e.target.value)}
+          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+          required
+        >
+          <option value="">Select your home store</option>
+          {LOCATIONS.map(loc => (
+            <option key={loc} value={loc}>{loc}</option>
+          ))}
+        </select>
         {success && <div className="text-green-600 font-semibold">{success}</div>}
         {error && <div className="text-red-600 font-semibold">{error}</div>}
         <button
