@@ -68,27 +68,23 @@ export default function EmployeeSettings() {
         <h1 className="text-xl sm:text-2xl font-bold text-primary tracking-tight">Settings</h1>
       </div>
       <button
-        className="mb-4 px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold"
-        onClick={() => window.history.back()}
-      >
-        ← Back
-      <button
         className="mb-4 px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold flex items-center gap-2"
         onClick={() => window.history.back()}
       >
         <span>&larr;</span>
         <span>Back</span>
       </button>
-            onChange={e => setHomeStore(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-            required
-          >
-            <option value="">Select your home store</option>
-            {LOCATIONS.map(loc => (
-              <option key={loc} value={loc}>{loc}</option>
-            ))}
-          </select>
-        </div>
+      <select
+        value={homeStore}
+        onChange={e => setHomeStore(e.target.value)}
+        className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+        required
+      >
+        <option value="">Select your home store</option>
+        {LOCATIONS.map(loc => (
+          <option key={loc} value={loc}>{loc}</option>
+        ))}
+      </select>
         {success && <div className="text-green-600 font-semibold">{success}</div>}
         {error && <div className="text-red-600 font-semibold">{error}</div>}
         <button
