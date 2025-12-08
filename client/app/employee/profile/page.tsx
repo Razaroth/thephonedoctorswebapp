@@ -64,10 +64,11 @@ export default function EmployeeProfile() {
         <h1 className="text-xl sm:text-2xl font-bold text-primary tracking-tight">Profile</h1>
       </div>
       <button
-        className="mb-4 px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold"
+        className="mb-4 px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold flex items-center gap-2"
         onClick={() => window.history.back()}
       >
-        ← Back
+        <span>&larr;</span>
+        <span>Back</span>
       </button>
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div>

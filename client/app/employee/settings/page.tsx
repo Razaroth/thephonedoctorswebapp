@@ -72,12 +72,13 @@ export default function EmployeeSettings() {
         onClick={() => window.history.back()}
       >
         ← Back
+      <button
+        className="mb-4 px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold flex items-center gap-2"
+        onClick={() => window.history.back()}
+      >
+        <span>&larr;</span>
+        <span>Back</span>
       </button>
-      <form className="space-y-6" onSubmit={handleSave}>
-        <div>
-          <label className="block text-gray-700 font-semibold mb-1">Home Store</label>
-          <select
-            value={homeStore}
             onChange={e => setHomeStore(e.target.value)}
             className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
             required
