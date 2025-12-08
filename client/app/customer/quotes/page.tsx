@@ -73,6 +73,15 @@ export default function CustomerQuotesPage() {
           </table>
         </div>
       )}
+      <div className="flex justify-center mt-8">
+        <button
+          className="px-6 py-3 bg-gradient-to-r from-gray-100 via-white to-gray-200 rounded-xl hover:bg-gray-200 text-black font-bold flex items-center gap-2 text-lg border border-primary shadow-lg hover:scale-[1.03] transition"
+          onClick={() => router.push('/customer/dashboard')}
+        >
+          <span className="text-2xl">&larr;</span>
+          <span className="ml-2">Back to Dashboard</span>
+        </button>
+      </div>
     </div>
   );
 }
