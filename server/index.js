@@ -76,7 +76,8 @@ app.get('/api/customer/profile', auth, async (req, res) => {
       email: user.email || "",
       city: user.city || "",
       state: user.state || "",
-      phone: user.phone || ""
+      phone: user.phone || "",
+      loyaltyPoints: user.loyaltyPoints || 0
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
