@@ -59,6 +59,9 @@ export default function CustomerDashboard() {
             <a href="/customer/profile" className="block text-primary hover:underline font-medium">Profile</a>
           </li>
           <li>
+            <a href="/customer/quotes" className="block text-primary hover:underline font-medium">My Quotes</a>
+          </li>
+          <li>
             <a href="/customer/settings" className="block text-primary hover:underline font-medium">Settings</a>
           </li>
         </ul>
