@@ -289,11 +289,10 @@ app.get('/api/employee/stats', auth, async (req, res) => {
   }
   try {
     const quotes = await fileStore.getAllQuotes();
-    const total = quotes.length;
-    const pending = quotes.filter(q => q.status === 'pending').length;
-    const reviewed = quotes.filter(q => q.status === 'reviewed').length;
+    const open = quotes.filter(q => q.status === 'pending' || q.status === 'reviewed').length;
     const completed = quotes.filter(q => q.status === 'completed').length;
-    res.json({ total, pending, reviewed, completed });
+    const assigned = quotes.filter(q => q.assignedTo === req.user.id).length;
+    res.json({ open, completed, assigned });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
