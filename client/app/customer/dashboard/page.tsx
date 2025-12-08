@@ -36,7 +36,7 @@ export default function CustomerDashboard() {
     <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-200">
       <div className="flex flex-col items-center w-full mt-8 mb-6">
         {/* Large logo, reuse employee dashboard style */}
-        <img src="/icon-512.png" alt="Logo" className="mb-8 mx-auto block" style={{ width: 240, height: 240 }} />
+        <img src="/icons/icon-512x512.png" alt="Logo" className="mb-8 mx-auto block" style={{ width: 240, height: 240 }} />
         <h1 className="text-3xl font-bold text-center mb-6 text-primary tracking-tight">
           {profile && profile.name ? `${profile.name}'s Dashboard` : "Customer Dashboard"}
         </h1>
