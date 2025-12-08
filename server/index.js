@@ -26,6 +26,12 @@ app.post('/api/login', async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
+  } catch (err) {
+    console.log(`[LOGIN] Error: ${err.message}`);
+    res.status(500).json({ error: err.message });
+  }
+});
 // ...existing code...
 // ...existing code...
 // --- All routes below ---
@@ -149,42 +155,19 @@ app.put('/api/employee/profile', auth, async (req, res) => {
   console.log('Profile update request:', { id: req.user.id, name, email, password, homeStore });
   const update = {};
   if (name) update.name = name;
-  // ...existing code...
-
-  require('dotenv').config();
-  const express = require('express');
-  const cors = require('cors');
-  const jwt = require('jsonwebtoken');
-  const bcrypt = require('bcryptjs');
-  const fileStore = require('./fileStore');
-  const { v4: uuidv4 } = require('uuid');
-
-  const app = express();
-  app.use(cors());
-  app.use(express.json());
-
-  // Auth middleware
-  function auth(req, res, next) {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'No token provided' });
-    }
-    const token = authHeader.split(' ')[1];
-    try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
-      next();
-    } catch {
-      return res.status(401).json({ error: 'Invalid token' });
-    }
-  }
-    console.log(`[LOGIN] Success: lookup ${lookupTime - start}ms, bcrypt ${bcryptEnd - bcryptStart}ms, total ${bcryptEnd - start}ms`);
-    res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
+  if (email) update.email = email;
+  if (password) update.password = await bcrypt.hash(password, 10);
+  if (homeStore !== undefined) update.homeStore = homeStore;
+  try {
+    const user = await fileStore.updateUser(req.user.id, update);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json({ id: user.id, name: user.name, email: user.email, homeStore: user.homeStore || "" });
   } catch (err) {
-    console.log(`[LOGIN] Error: ${err.message}`);
     res.status(500).json({ error: err.message });
   }
 });
+
+// ...existing code...
 
 
 // Quote request endpoint
