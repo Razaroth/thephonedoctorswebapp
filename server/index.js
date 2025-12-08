@@ -49,7 +49,7 @@ app.get('/api/employee/profile', auth, async (req, res) => {
   try {
     const user = await fileStore.getUserById(req.user.id);
     if (!user) return res.status(404).json({ error: 'User not found' });
-    res.json({ id: user.id, name: user.name, email: user.email });
+    res.json({ id: user.id, name: user.name, email: user.email, homeStore: user.homeStore || "" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -62,11 +62,12 @@ app.put('/api/employee/profile', auth, async (req, res) => {
     console.error('Access denied: role is', req.user.role);
     return res.status(403).json({ error: 'Access denied' });
   }
-  const { name, email, password } = req.body;
-  console.log('Profile update request:', { id: req.user.id, name, email, password });
+  const { name, email, password, homeStore } = req.body;
+  console.log('Profile update request:', { id: req.user.id, name, email, password, homeStore });
   const update = {};
   if (name) update.name = name;
   if (email) update.email = email;
+  if (typeof homeStore === "string") update.homeStore = homeStore;
   if (password) update.password = await bcrypt.hash(password, 10);
   try {
     const user = await fileStore.updateUser(req.user.id, update);
@@ -74,7 +75,7 @@ app.put('/api/employee/profile', auth, async (req, res) => {
       console.error('User not found for id:', req.user.id);
       return res.status(404).json({ error: 'User not found' });
     }
-    res.json({ id: user.id, name: user.name, email: user.email });
+    res.json({ id: user.id, name: user.name, email: user.email, homeStore: user.homeStore || "" });
   } catch (err) {
     console.error('Profile update error:', err);
     res.status(500).json({ error: err.message });
