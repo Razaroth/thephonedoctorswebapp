@@ -2,6 +2,8 @@
 // --- All routes below ---
 // ...existing code...
 
+// ...existing code...
+
 // Get customer profile
 app.get('/api/customer/profile', auth, async (req, res) => {
   if (req.user.role !== 'customer') {
