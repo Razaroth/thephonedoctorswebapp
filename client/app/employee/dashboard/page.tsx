@@ -47,13 +47,11 @@ export default function EmployeeDashboard() {
 
   return (
     <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 bg-white p-4 sm:p-8 rounded-xl shadow-lg border border-gray-200">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3 justify-between">
-        <div className="flex items-center gap-3">
-          <Logo size={80} />
-          <h1 className="text-2xl sm:text-3xl font-bold text-primary tracking-tight">
-            {profile && profile.name ? `${profile.name}'s Dashboard` : "Employee Dashboard"}
-          </h1>
-        </div>
+      <div className="flex flex-col items-center w-full mt-8 mb-6">
+        <Logo size={480} className="mb-8 mx-auto block" />
+        <h1 className="text-3xl font-bold text-center mb-6 text-primary tracking-tight">
+          {profile && profile.name ? `${profile.name}'s Dashboard` : "Employee Dashboard"}
+        </h1>
       </div>
       <div className="mb-4">
         <span className="text-base sm:text-lg font-semibold text-gray-700">
