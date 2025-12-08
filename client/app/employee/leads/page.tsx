@@ -223,15 +223,15 @@ export default function EmployeeLeadsPage() {
 					   </div>
 					   <div className="flex justify-center w-full mt-8">
 						   <button
-							   className="px-6 py-3 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold"
-							   onClick={() => window.history.back()}
-						   >
-							   ← Back
-						   <button
 							   className="px-6 py-3 bg-gray-100 rounded hover:bg-gray-200 text-primary font-semibold flex items-center gap-2"
 							   onClick={() => window.history.back()}
 						   >
 							   <span>&larr;</span>
 							   <span>Back</span>
 						   </button>
-}
+					   </div>
+				   </>
+			   )}
+		   </div>
+	   );
+	}
