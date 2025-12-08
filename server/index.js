@@ -114,39 +114,7 @@ app.put('/api/customer/profile', auth, async (req, res) => {
 // ...existing code...
 
 
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const fileStore = require('./fileStore');
-const { v4: uuidv4 } = require('uuid');
-
-
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-
-
-
-
-// Auth middleware
-function auth(req, res, next) {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'No token provided' });
-  }
-  const token = authHeader.split(' ')[1];
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (err) {
-    return res.status(401).json({ error: 'Invalid token' });
-  }
-}
+// ...existing code...
 
 // --- All routes below ---
 
