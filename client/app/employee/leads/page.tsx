@@ -121,7 +121,7 @@ export default function EmployeeLeadsPage() {
 							<tr>
 								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Customer</th>
 								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Email</th>
-								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Phone</th>
+								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap min-w-[160px]">Phone</th>
 								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Device</th>
 								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Issue</th>
 								<th className="p-2 sm:p-3 border bg-white text-black whitespace-nowrap">Details</th>
@@ -137,7 +137,7 @@ export default function EmployeeLeadsPage() {
 										<span className="font-semibold text-primary">{q.user?.name || "-"}</span>
 									</td>
 									<td className="p-3 border align-top">{q.user?.email || "-"}</td>
-									<td className="p-3 border align-top">{q.user?.phone || "-"}</td>
+									<td className="p-3 border align-top min-w-[160px] break-all">{q.user?.phone || "-"}</td>
 									<td className="p-3 border align-top">{q.device}</td>
 									<td className="p-3 border align-top">{q.issue}</td>
 									<td className="p-3 border align-top">{q.details}</td>
