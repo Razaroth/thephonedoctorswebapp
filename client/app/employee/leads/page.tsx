@@ -71,7 +71,10 @@ export default function EmployeeLeadsPage() {
 
 	return (
 		   <div className="flex flex-col items-center justify-center min-h-screen">
-			   <Logo size={180} className="mb-4" />
+			   <div className="flex flex-col items-center w-full">
+				   <Logo size={360} className="mb-6 mx-auto" />
+				   <h1 className="text-2xl font-bold text-center mb-4">Employee Leads Dashboard</h1>
+			   </div>
 			<div className="flex flex-col sm:flex-row flex-wrap gap-2 mb-4 items-start sm:items-center bg-white p-3 sm:p-4 rounded shadow border border-gray-200 w-full">
 				<input
 					type="text"
