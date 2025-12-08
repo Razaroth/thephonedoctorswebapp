@@ -173,71 +173,17 @@ app.put('/api/employee/profile', auth, async (req, res) => {
   function auth(req, res, next) {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      // ...existing code...
-
-      // Get customer profile
-      app.get('/api/customer/profile', auth, async (req, res) => {
-        if (req.user.role !== 'customer') {
-          return res.status(403).json({ error: 'Access denied' });
-        }
-        try {
-          const user = await fileStore.getUserById(req.user.id);
-          if (!user) return res.status(404).json({ error: 'User not found' });
-          res.json({
-            id: user.id,
-            name: user.name || "",
-            email: user.email || "",
-            city: user.city || "",
-            state: user.state || "",
-            phone: user.phone || ""
-          });
-        } catch (err) {
-          res.status(500).json({ error: err.message });
-        }
-      });
-
-      // Update customer profile
-      app.put('/api/customer/profile', auth, async (req, res) => {
-        if (req.user.role !== 'customer') {
-          return res.status(403).json({ error: 'Access denied' });
-        }
-        const { name, email, city, state, phone } = req.body;
-        const update = {};
-        if (typeof name === "string") update.name = name;
-        if (typeof email === "string") update.email = email;
-        if (typeof city === "string") update.city = city;
-        if (typeof state === "string") update.state = state;
-        if (typeof phone === "string") update.phone = phone;
-        try {
-          const user = await fileStore.updateUser(req.user.id, update);
-          if (!user) return res.status(404).json({ error: 'User not found' });
-          res.json({
-            id: user.id,
-            name: user.name || "",
-            email: user.email || "",
-            city: user.city || "",
-            state: user.state || "",
-            phone: user.phone || ""
-          });
-        } catch (err) {
-          res.status(500).json({ error: err.message });
-        }
-      });
-      console.log(`[LOGIN] User lookup failed in ${lookupTime - start}ms`);
-      return res.status(400).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: 'No token provided' });
     }
-    if (user.role === 'employee' && user.status !== 'active') {
-      console.log(`[LOGIN] Employee not active, lookup in ${lookupTime - start}ms`);
-      return res.status(403).json({ error: 'Your account is pending approval by an administrator.' });
+    const token = authHeader.split(' ')[1];
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded;
+      next();
+    } catch {
+      return res.status(401).json({ error: 'Invalid token' });
     }
-    const bcryptStart = Date.now();
-    const isMatch = await bcrypt.compare(password, user.password);
-    const bcryptEnd = Date.now();
-    if (!isMatch) {
-      console.log(`[LOGIN] Bcrypt failed in ${bcryptEnd - bcryptStart}ms`);
-      return res.status(400).json({ error: 'Invalid credentials' });
-    }
-    const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
+  }
     console.log(`[LOGIN] Success: lookup ${lookupTime - start}ms, bcrypt ${bcryptEnd - bcryptStart}ms, total ${bcryptEnd - start}ms`);
     res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   } catch (err) {
