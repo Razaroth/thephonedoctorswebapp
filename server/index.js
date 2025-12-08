@@ -26,13 +26,7 @@ app.post('/api/login', async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    console.log(`[LOGIN] Success: lookup ${lookupTime - start}ms, bcrypt ${bcryptEnd - bcryptStart}ms, total ${bcryptEnd - start}ms`);
-    res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
-  } catch (err) {
-    console.log(`[LOGIN] Error: ${err.message}`);
-    res.status(500).json({ error: err.message });
-  }
-});
+// ...existing code...
 // ...existing code...
 // --- All routes below ---
 // ...existing code...
