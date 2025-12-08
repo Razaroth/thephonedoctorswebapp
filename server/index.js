@@ -2,7 +2,36 @@
 // Place this after app initialization and middleware
 // ...existing code...
 
-// After app initialization and middleware
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const fileStore = require('./fileStore');
+const { v4: uuidv4 } = require('uuid');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Auth middleware
+function auth(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+  const token = authHeader.split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+}
+
+// --- All routes below ---
+
 // --- LOGIN ROUTE ---
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
@@ -32,12 +61,6 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-// ...existing code...
-// ...existing code...
-// --- All routes below ---
-// ...existing code...
-
-// ...existing code...
 
 // Get customer profile
 app.get('/api/customer/profile', auth, async (req, res) => {
@@ -59,8 +82,6 @@ app.get('/api/customer/profile', auth, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
-// ...existing code...
 
 // Update customer profile
 app.put('/api/customer/profile', auth, async (req, res) => {
