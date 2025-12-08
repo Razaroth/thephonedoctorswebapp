@@ -122,6 +122,21 @@ export default function QuotePage() {
           rows={4}
         />
         <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Submit</button>
+        <button
+          type="button"
+          className="w-full mt-3 bg-gray-200 text-black p-2 rounded hover:bg-gray-300 font-semibold"
+          onClick={() => {
+            const token = localStorage.getItem("token");
+            let dashboard = "/dashboard";
+            if (token) {
+              try {
+                const payload = JSON.parse(atob(token.split(".")[1]));
+                if (payload.role === "customer") dashboard = "/customer/dashboard";
+              } catch {}
+            }
+            router.push(dashboard);
+          }}
+        >Back to Dashboard</button>
       </form>
     </div>
   );
