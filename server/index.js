@@ -1,39 +1,5 @@
 // ...existing code...
-// --- All routes below ---
-// ...existing code...
-
-// ...existing code...
-
-// Get customer profile
-app.get('/api/customer/profile', auth, async (req, res) => {
-  if (req.user.role !== 'customer') {
-    return res.status(403).json({ error: 'Access denied' });
-  }
-  try {
-    const user = await fileStore.getUserById(req.user.id);
-    if (!user) return res.status(404).json({ error: 'User not found' });
-    res.json({
-      id: user.id,
-      name: user.name || "",
-      email: user.email || "",
-      city: user.city || "",
-      state: user.state || "",
-      phone: user.phone || ""
-    });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Login endpoint
-app.post('/api/login', async (req, res) => {
-  const { email, password } = req.body;
-  const start = Date.now();
-  try {
-    const user = await fileStore.getUserByEmail(email);
-    const lookupTime = Date.now();
-    if (!user) {
-// Login endpoint (duplicate, ensure async)
+// Place this after app initialization and middleware
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
   const start = Date.now();
@@ -63,6 +29,34 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+// ...existing code...
+// --- All routes below ---
+// ...existing code...
+
+// ...existing code...
+
+// Get customer profile
+app.get('/api/customer/profile', auth, async (req, res) => {
+  if (req.user.role !== 'customer') {
+    return res.status(403).json({ error: 'Access denied' });
+  }
+  try {
+    const user = await fileStore.getUserById(req.user.id);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json({
+      id: user.id,
+      name: user.name || "",
+      email: user.email || "",
+      city: user.city || "",
+      state: user.state || "",
+      phone: user.phone || ""
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ...existing code...
 
 // Update customer profile
 app.put('/api/customer/profile', auth, async (req, res) => {
