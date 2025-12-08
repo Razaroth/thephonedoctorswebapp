@@ -92,6 +92,7 @@ async function addQuote(quote) {
   const quotes = await getAllQuotes();
   quotes.push(quote);
   await writeJson(quotesFile, quotes);
+  console.log(`[QUOTE] Saved quote:`, quote);
 }
 
 async function updateQuote(id, update) {
