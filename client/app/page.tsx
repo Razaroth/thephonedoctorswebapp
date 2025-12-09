@@ -4,7 +4,7 @@ import Logo from "@/components/Logo";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center font-sans">
+    <div className="min-h-screen flex flex-col items-center justify-center font-sans" style={{ background: "url('https://thephonedoctors.com/images/banner-bg.png') repeat center center fixed", backgroundSize: "cover" }}>
       <main className="w-full max-w-3xl mx-auto flex flex-col items-center px-4 py-8 sm:py-16">
         <div className="mb-8 flex flex-col items-center">
           <Logo size={420} className="mb-10" />
