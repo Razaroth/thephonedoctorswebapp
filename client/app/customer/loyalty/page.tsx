@@ -39,14 +39,9 @@ export default function LoyaltyPointsPage() {
 
   return (
     <div className="max-w-xl mx-auto mt-10 bg-gradient-to-br from-white via-gray-50 to-red-50 p-8 rounded-2xl shadow-2xl border border-gray-100 animate-fade-in">
-      <h1 className="text-3xl font-extrabold mb-8 text-center text-primary tracking-tight drop-shadow-lg flex items-center justify-center gap-2">
-        <span className="material-icons text-red-500">loyalty</span> Loyalty Points
-      </h1>
+      <h1 className="text-3xl font-extrabold mb-8 text-center text-primary tracking-tight drop-shadow-lg">Loyalty Points</h1>
       <div className="flex flex-col items-center mb-8">
-        <div className="text-5xl font-extrabold flex items-center gap-2 text-red-600">
-          <span className="material-icons">loyalty</span>
-          {loading ? "Loading..." : loyaltyPoints}
-        </div>
+        <div className="text-5xl font-extrabold text-red-600">{loading ? "Loading..." : loyaltyPoints}</div>
         <div className="mt-2 text-lg font-semibold text-gray-700">Loyalty Points</div>
         {currentTier && (
           <div className="mt-2 text-base font-bold text-primary">Current Tier: {currentTier.name} ({currentTier.discount} discount)</div>
@@ -54,9 +49,7 @@ export default function LoyaltyPointsPage() {
         {error && <div className="text-red-500 mt-2">{error}</div>}
       </div>
       <div className="mb-8">
-        <h2 className="text-xl font-bold text-gray-700 mb-4 flex items-center gap-2">
-          <span className="material-icons text-red-500">star</span> Loyalty Tiers & Rewards
-        </h2>
+        <h2 className="text-xl font-bold text-gray-700 mb-4">Loyalty Tiers & Rewards</h2>
         <table className="w-full border mb-2 text-sm rounded-xl overflow-hidden shadow-lg bg-white">
           <thead>
             <tr className="bg-gradient-to-r from-red-100 via-white to-red-50">
@@ -78,13 +71,12 @@ export default function LoyaltyPointsPage() {
         <p className="mt-4 text-gray-700 text-center">Earn points with every repair. The more points you have, the higher your tier and the bigger your discount on future repairs!</p>
       </div>
       <div className="flex justify-center mt-8">
-        <button
-          className="px-6 py-3 bg-gradient-to-r from-gray-100 via-white to-gray-200 rounded-xl hover:bg-gray-200 text-black font-bold flex items-center gap-2 text-lg border border-primary shadow-lg hover:scale-[1.03] transition"
-          onClick={() => router.push('/customer/dashboard')}
-        >
-          <span className="text-2xl">&larr;</span>
-          <span className="ml-2">Back to Dashboard</span>
-        </button>
+          <button
+            className="px-6 py-3 bg-gradient-to-r from-gray-100 via-white to-gray-200 rounded-xl hover:bg-gray-200 text-black font-bold text-lg border border-primary shadow-lg hover:scale-[1.03] transition"
+            onClick={() => router.push('/customer/dashboard')}
+          >
+            ← Back to Dashboard
+          </button>
       </div>
     </div>
   );
