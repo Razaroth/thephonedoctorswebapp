@@ -193,7 +193,13 @@ app.get('/api/my-quotes', auth, async (req, res) => {
   }
   try {
     const quotes = await fileStore.getAllQuotes();
-    const myQuotes = quotes.filter(q => q.user === req.user.id);
+    const myQuotes = quotes.filter(q => q.user === req.user.id).map(q => {
+      // If deleted, mark status as 'deleted' for customer view
+      if (q.deleted) {
+        return { ...q, status: 'deleted' };
+      }
+      return q;
+    });
     res.json(myQuotes);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -309,17 +315,24 @@ app.get('/api/quotes', auth, async (req, res) => {
     const quotes = await fileStore.getAllQuotes();
     const users = await fileStore.getAllUsers();
     const employee = await fileStore.getUserById(req.user.id);
-    // Exclude archived quotes for employees
-    let activeQuotes = quotes.filter(q => q.status !== 'archived');
+    // Exclude archived and deleted quotes for employees
+    let activeQuotes = quotes.filter(q => q.status !== 'archived' && !q.deleted);
     // Filter by homeStore if set
     if (employee && employee.homeStore) {
       activeQuotes = activeQuotes.filter(q => q.location === employee.homeStore);
     }
     const quotesWithUser = activeQuotes.map(q => {
       const user = users.find(u => u.id === q.user);
+      // Prefer user.phone, but fall back to quote.phone if missing
+      let phone = '-';
+      if (user && user.phone && user.phone !== '-') {
+        phone = user.phone;
+      } else if (q.phone) {
+        phone = q.phone;
+      }
       return {
         ...q,
-        user: user ? { name: user.name, email: user.email, phone: user.phone || '-' } : { name: '-', email: '-', phone: '-' }
+        user: user ? { name: user.name, email: user.email, phone } : { name: '-', email: '-', phone }
       };
     });
     res.json(quotesWithUser);

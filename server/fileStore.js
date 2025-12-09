@@ -3,7 +3,7 @@ async function deleteQuote(id) {
   const quotes = await getAllQuotes();
   const idx = quotes.findIndex(q => q.id === id);
   if (idx === -1) return false;
-  quotes.splice(idx, 1);
+  quotes[idx].deleted = true;
   await writeJson(quotesFile, quotes);
   return true;
 }
