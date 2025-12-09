@@ -56,6 +56,7 @@ export default function CustomerQuotesPage() {
               <tr className="bg-gradient-to-r from-red-100 via-white to-red-50">
                 <th className="p-3 border font-semibold text-red-600">Device</th>
                 <th className="p-3 border font-semibold text-red-600">Issue</th>
+                <th className="p-3 border font-semibold text-red-600">Description</th>
                 <th className="p-3 border font-semibold text-red-600">Date</th>
               </tr>
             </thead>
@@ -64,6 +65,7 @@ export default function CustomerQuotesPage() {
                 <tr key={q._id} className="hover:bg-red-50 transition-all">
                   <td className="p-3 border whitespace-nowrap">{q.device}</td>
                   <td className="p-3 border whitespace-nowrap">{q.issue}</td>
+                  <td className="p-3 border whitespace-nowrap">{q.details || '-'}</td>
                   <td className="p-3 border whitespace-nowrap">{new Date(q.createdAt).toLocaleString()}</td>
                 </tr>
               ))}
