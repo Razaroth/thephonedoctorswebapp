@@ -30,7 +30,7 @@ export default function CustomerDashboard() {
   }, [router]);
 
   return (
-    <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 bg-gradient-to-br from-white via-gray-50 to-red-50 p-4 sm:p-8 rounded-2xl shadow-2xl border border-gray-100 animate-fade-in text-center">
+    <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 p-4 sm:p-8 rounded-2xl shadow-2xl border border-gray-100 animate-fade-in text-center">
       <div className="flex flex-col items-center w-full mt-8 mb-6 text-center">
         <img src="/icons/icon-512x512.png" alt="Logo" className="mb-8 mx-auto block drop-shadow-lg animate-fade-in" style={{ width: 240, height: 240 }} />
         <h1 className="text-4xl font-extrabold text-center mb-6 text-primary tracking-tight drop-shadow-lg">

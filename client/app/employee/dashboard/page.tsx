@@ -46,7 +46,7 @@ export default function EmployeeDashboard() {
   if (!user) return null;
 
   return (
-    <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 bg-gradient-to-br from-white via-gray-50 to-red-50 p-8 rounded-2xl shadow-2xl border border-gray-100 animate-fade-in text-center">
+    <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 p-8 rounded-2xl shadow-2xl border border-gray-100 animate-fade-in text-center">
       <div className="flex flex-col items-center w-full mt-8 mb-8 text-center">
         <Logo size={240} className="mb-8 mx-auto block drop-shadow-lg animate-fade-in" />
         <h1 className="text-4xl font-extrabold text-center mb-6 text-primary tracking-tight drop-shadow-lg flex items-center justify-center gap-2">
