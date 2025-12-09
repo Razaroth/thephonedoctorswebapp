@@ -14,7 +14,8 @@
 
 
 body {
-  background: var(--background);
+  background: url('https://thephonedoctors.com/images/banner-bg.png') repeat center center fixed;
+  background-size: cover;
   color: var(--foreground);
   font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
   min-height: 100vh;
