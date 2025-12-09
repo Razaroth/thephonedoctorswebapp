@@ -99,7 +99,7 @@ export default function EmployeeProfile() {
         >Save Changes</button>
         <button
           type="button"
-          className="w-full mt-4 px-5 py-3 bg-gray-100 rounded-xl hover:bg-red-100 text-primary font-semibold shadow transition-all"
+          className="w-full mt-4 px-5 py-3 bg-gray-400 rounded-xl hover:bg-red-600 text-white font-semibold shadow transition-all"
           onClick={() => window.location.href = '/employee/dashboard'}
         >
           Back
