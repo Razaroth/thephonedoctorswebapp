@@ -49,7 +49,7 @@ export default function LoyaltyPointsPage() {
         {error && <div className="text-red-500 mt-2">{error}</div>}
       </div>
       <div className="mb-8">
-        <h2 className="text-xl font-bold text-gray-700 mb-4">Loyalty Tiers & Rewards</h2>
+        <h2 className="text-xl font-bold text-gray-700 mb-4 text-center">Loyalty Tiers & Rewards</h2>
         <table className="w-full border mb-2 text-sm rounded-xl overflow-hidden shadow-lg bg-white">
           <thead>
             <tr className="bg-gradient-to-r from-red-100 via-white to-red-50">
