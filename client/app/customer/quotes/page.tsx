@@ -54,19 +54,17 @@ export default function CustomerQuotesPage() {
           <table className="w-full border mb-2 text-xs sm:text-base rounded-xl overflow-hidden shadow-lg">
             <thead>
               <tr className="bg-gradient-to-r from-red-100 via-white to-red-50">
-                <th className="p-3 border font-semibold text-red-600 flex items-center gap-1"><span className="material-icons text-red-400">smartphone</span>Device</th>
-                <th className="p-3 border font-semibold text-red-600 flex items-center gap-1"><span className="material-icons text-red-400">report_problem</span>Issue</th>
-                <th className="p-3 border font-semibold text-red-600 flex items-center gap-1"><span className="material-icons text-red-400">hourglass_top</span>Status</th>
-                <th className="p-3 border font-semibold text-red-600 flex items-center gap-1"><span className="material-icons text-red-400">calendar_today</span>Date</th>
+                <th className="p-3 border font-semibold text-red-600">Device</th>
+                <th className="p-3 border font-semibold text-red-600">Issue</th>
+                <th className="p-3 border font-semibold text-red-600">Date</th>
               </tr>
             </thead>
             <tbody>
               {quotes.map(q => (
                 <tr key={q._id} className="hover:bg-red-50 transition-all">
-                  <td className="p-3 border whitespace-nowrap flex items-center gap-2"><span className="material-icons text-red-300">smartphone</span>{q.device}</td>
-                  <td className="p-3 border whitespace-nowrap flex items-center gap-2"><span className="material-icons text-red-300">report_problem</span>{q.issue}</td>
-                  <td className="p-3 border whitespace-nowrap flex items-center gap-2"><span className="material-icons text-red-300">hourglass_top</span>{q.status}</td>
-                  <td className="p-3 border whitespace-nowrap flex items-center gap-2"><span className="material-icons text-red-300">calendar_today</span>{new Date(q.createdAt).toLocaleString()}</td>
+                  <td className="p-3 border whitespace-nowrap">{q.device}</td>
+                  <td className="p-3 border whitespace-nowrap">{q.issue}</td>
+                  <td className="p-3 border whitespace-nowrap">{new Date(q.createdAt).toLocaleString()}</td>
                 </tr>
               ))}
             </tbody>
