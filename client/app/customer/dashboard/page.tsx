@@ -5,7 +5,6 @@ export default function CustomerDashboard() {
   const [loyaltyPoints, setLoyaltyPoints] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [debug, setDebug] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const router = require('next/navigation').useRouter();
 
@@ -20,14 +19,12 @@ export default function CustomerDashboard() {
     })
       .then(async res => {
         const data = await res.json();
-        setDebug({ status: res.status, data });
         setLoyaltyPoints(data.loyaltyPoints || 0);
         setProfile(data);
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Failed to fetch loyalty points");
-        setDebug({ error: err?.message });
         setLoading(false);
       });
   }, [router]);
