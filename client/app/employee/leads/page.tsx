@@ -210,25 +210,28 @@ export default function EmployeeLeadsPage() {
                         <span className="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>Save</span>
                       </button>
                       <button
-                        className="mt-2 w-full bg-gradient-to-r from-red-600 via-primary to-black text-white rounded px-2 py-1 text-xs font-semibold shadow hover:scale-[1.03] transition"
+                        className="mt-2 w-full bg-gradient-to-r from-gray-600 via-primary to-black text-white rounded px-2 py-1 text-xs font-semibold shadow hover:scale-[1.03] transition"
                         onClick={async () => {
                           const token = localStorage.getItem("token");
                           if (!token) return;
                           const res = await fetch(`https://thephonedoctorswebapp-server.onrender.com/api/quotes/${q.id}`, {
-                            method: "DELETE",
+                            method: "PATCH",
                             headers: {
+                              "Content-Type": "application/json",
                               Authorization: `Bearer ${token}`,
                             },
+                            body: JSON.stringify({ status: "archived" }),
                           });
                           if (res.ok) {
-                            setQuotes(quotes => quotes.filter(quote => quote.id !== q.id));
+                            const updated = await res.json();
+                            setQuotes(quotes => quotes.filter(quote => quote.id !== updated.id));
                           } else {
                             const data = await res.json();
-                            setError(data.error || "Failed to delete lead");
+                            setError(data.error || "Failed to archive lead");
                           }
                         }}
                       >
-                        <span className="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>Delete</span>
+                        <span className="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>Archive</span>
                       </button>
                     </td>
                   </tr>

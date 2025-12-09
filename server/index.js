@@ -347,9 +347,10 @@ app.delete('/api/quotes/:id', auth, async (req, res) => {
     return res.status(403).json({ error: 'Access denied' });
   }
   try {
-    const success = await fileStore.deleteQuote(req.params.id);
-    if (!success) return res.status(404).json({ error: 'Quote not found' });
-    res.json({ message: 'Quote deleted' });
+    // Archive the quote instead of deleting
+    const quote = await fileStore.updateQuote(req.params.id, { status: 'archived' });
+    if (!quote) return res.status(404).json({ error: 'Quote not found' });
+    res.json({ message: 'Quote archived' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
