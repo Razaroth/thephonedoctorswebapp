@@ -30,14 +30,14 @@ export default function CustomerDashboard() {
   }, [router]);
 
   return (
-    <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 bg-gradient-to-br from-white via-gray-50 to-red-50 p-4 sm:p-8 rounded-2xl shadow-2xl border border-gray-100 animate-fade-in">
-      <div className="flex flex-col items-center w-full mt-8 mb-6">
+    <div className="max-w-full sm:max-w-2xl mx-auto mt-6 sm:mt-10 bg-gradient-to-br from-white via-gray-50 to-red-50 p-4 sm:p-8 rounded-2xl shadow-2xl border border-gray-100 animate-fade-in text-center">
+      <div className="flex flex-col items-center w-full mt-8 mb-6 text-center">
         <img src="/icons/icon-512x512.png" alt="Logo" className="mb-8 mx-auto block drop-shadow-lg animate-fade-in" style={{ width: 240, height: 240 }} />
         <h1 className="text-4xl font-extrabold text-center mb-6 text-primary tracking-tight drop-shadow-lg">
           {profile && profile.name ? `${profile.name}'s Dashboard` : "Customer Dashboard"}
         </h1>
       </div>
-      <div className="mb-6">
+      <div className="mb-6 text-center">
         <span className="text-lg sm:text-xl font-semibold text-gray-700">
           Welcome{profile && profile.name ? ", " : ""}
           <span className="text-primary">{profile && profile.name ? profile.name : "Customer"}</span>
@@ -48,8 +48,8 @@ export default function CustomerDashboard() {
         <a href="/quote" className="text-primary font-semibold px-4 py-2 rounded-lg bg-white shadow hover:bg-red-100 transition-all">Request a Quote</a>
         <a href="/customer/loyalty" className="text-primary font-semibold px-4 py-2 rounded-lg bg-white shadow hover:bg-red-100 transition-all">Loyalty Points</a>
       </nav>
-      <div className="mb-10">
-        <h2 className="text-xl font-bold text-gray-700 mb-4">Quick Links</h2>
+      <div className="mb-10 text-center">
+        <h2 className="text-xl font-bold text-gray-700 mb-4 text-center">Quick Links</h2>
         <ul className="space-y-2">
           <li>
             <a href="/customer/profile" className="text-primary hover:bg-red-50 font-medium px-3 py-2 rounded-lg transition-all">Profile</a>
@@ -62,17 +62,7 @@ export default function CustomerDashboard() {
           </li>
         </ul>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-red-500 via-red-400 to-red-600 rounded-xl p-8 text-center shadow-xl text-white hover:scale-105 transition-transform">
-          <div className="text-5xl font-extrabold flex items-center justify-center gap-2">
-            <span className="material-icons">loyalty</span>
-            {loading ? "Loading..." : loyaltyPoints}
-          </div>
-          <div className="mt-2 text-lg font-semibold">Loyalty Points</div>
-          <p className="text-white mt-2">Earn points every time you repair a device with us!</p>
-        </div>
-        {/* Add more cards for other customer stats/features here */}
-      </div>
+      {/* Loyalty points box removed as requested */}
       {error && <div className="text-red-500 mt-2 text-center animate-fade-in">{error}</div>}
       <div className="mt-8 flex justify-center">
         <button
