@@ -34,10 +34,7 @@ export default function CustomerDashboard() {
       <div className="flex flex-col items-center w-full mt-8 mb-6">
         <img src="/icons/icon-512x512.png" alt="Logo" className="mb-8 mx-auto block drop-shadow-lg animate-fade-in" style={{ width: 240, height: 240 }} />
         <h1 className="text-4xl font-extrabold text-center mb-6 text-primary tracking-tight drop-shadow-lg">
-          <span className="inline-flex items-center gap-2">
-            <span className="material-icons text-red-600">person</span>
-            {profile && profile.name ? `${profile.name}'s Dashboard` : "Customer Dashboard"}
-          </span>
+          {profile && profile.name ? `${profile.name}'s Dashboard` : "Customer Dashboard"}
         </h1>
       </div>
       <div className="mb-6">
@@ -47,35 +44,21 @@ export default function CustomerDashboard() {
         </span>
       </div>
       <nav className="flex flex-wrap gap-4 mb-8 items-center justify-center">
-        <a href="/customer/dashboard" className="flex items-center gap-1 text-primary font-semibold px-4 py-2 rounded-lg bg-white shadow hover:bg-red-100 transition-all">
-          <span className="material-icons text-red-500">home</span> Dashboard Home
-        </a>
-        <a href="/quote" className="flex items-center gap-1 text-primary font-semibold px-4 py-2 rounded-lg bg-white shadow hover:bg-red-100 transition-all">
-          <span className="material-icons text-red-500">request_quote</span> Request a Quote
-        </a>
-        <a href="/customer/loyalty" className="flex items-center gap-1 text-primary font-semibold px-4 py-2 rounded-lg bg-white shadow hover:bg-red-100 transition-all">
-          <span className="material-icons text-red-500">loyalty</span> Loyalty Points
-        </a>
+        <a href="/customer/dashboard" className="text-primary font-semibold px-4 py-2 rounded-lg bg-white shadow hover:bg-red-100 transition-all">Dashboard Home</a>
+        <a href="/quote" className="text-primary font-semibold px-4 py-2 rounded-lg bg-white shadow hover:bg-red-100 transition-all">Request a Quote</a>
+        <a href="/customer/loyalty" className="text-primary font-semibold px-4 py-2 rounded-lg bg-white shadow hover:bg-red-100 transition-all">Loyalty Points</a>
       </nav>
       <div className="mb-10">
-        <h2 className="text-xl font-bold text-gray-700 mb-4 flex items-center gap-2">
-          <span className="material-icons text-red-500">link</span> Quick Links
-        </h2>
+        <h2 className="text-xl font-bold text-gray-700 mb-4">Quick Links</h2>
         <ul className="space-y-2">
           <li>
-            <a href="/customer/profile" className="flex items-center gap-2 text-primary hover:bg-red-50 font-medium px-3 py-2 rounded-lg transition-all">
-              <span className="material-icons text-red-400">person</span> Profile
-            </a>
+            <a href="/customer/profile" className="text-primary hover:bg-red-50 font-medium px-3 py-2 rounded-lg transition-all">Profile</a>
           </li>
           <li>
-            <a href="/customer/quotes" className="flex items-center gap-2 text-primary hover:bg-red-50 font-medium px-3 py-2 rounded-lg transition-all">
-              <span className="material-icons text-red-400">description</span> My Quotes
-            </a>
+            <a href="/customer/quotes" className="text-primary hover:bg-red-50 font-medium px-3 py-2 rounded-lg transition-all">My Quotes</a>
           </li>
           <li>
-            <a href="/customer/settings" className="flex items-center gap-2 text-primary hover:bg-red-50 font-medium px-3 py-2 rounded-lg transition-all">
-              <span className="material-icons text-red-400">settings</span> Settings
-            </a>
+            <a href="/customer/settings" className="text-primary hover:bg-red-50 font-medium px-3 py-2 rounded-lg transition-all">Settings</a>
           </li>
         </ul>
       </div>
